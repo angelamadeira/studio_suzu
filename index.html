@@ -138,7 +138,6 @@
   /* ---------- typography ---------- */
   h1,h2,h3{font-weight:600}
   .eyebrow{font-family:var(--sans);font-size:var(--label);letter-spacing:var(--label-track);text-transform:uppercase;color:var(--rotulo);font-weight:400;display:inline-flex;align-items:center}
-  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ouro);margin-right:.7em;flex:0 0 auto}
   .lede{font-size:clamp(1.05rem,2.1vw,1.28rem);line-height:1.6;color:var(--text-2);font-weight:300}
   em,.it{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--text)}
   /* frases-assinatura da marca em Cormorant — mas SÓ quando estão soltas.
@@ -170,7 +169,6 @@
     --pop:cubic-bezier(.34,1.32,.5,1);
   }
   .cover .eyebrow{margin:0 0 clamp(2.4rem,6vh,4rem);animation:sobe 1s var(--ease) .1s backwards}
-  .cover .eyebrow::before{display:none}
 
   .cover-row{display:flex;align-items:center;gap:clamp(.5rem,1.5vw,1rem);width:100%;max-width:min(100%,44rem)}
   .cd{
@@ -538,6 +536,17 @@
     .theme-toggle:hover::before{color:var(--text)}
   }
 
+  /* ---------- ícones (família de linha, 24×24, traço 2px, sem preenchimento) ---------- */
+  .icon{width:1.2em;height:1.2em;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;
+        stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em}
+  .icon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:1.8rem}
+  .icon-tile{border:1px solid var(--hair);border-radius:12px;padding:1.6rem 1rem 1.2rem;
+    display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
+  .icon-tile .icon{width:26px;height:26px;color:var(--text)}
+  .icon-tile .nm{font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;color:var(--rotulo)}
+  @media(max-width:760px){ .icon-grid{grid-template-columns:repeat(3,1fr)} }
+  @media(max-width:420px){ .icon-grid{grid-template-columns:repeat(2,1fr)} }
+
   /* ---------- feedback ---------- */
   .fb{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}
   /* Estas media queries TÊM de vir depois da regra base: @media não confere prioridade
@@ -545,7 +554,8 @@
   @media(max-width:900px){ .fb{grid-template-columns:1fr 1fr} }
   @media(max-width:520px){ .fb{grid-template-columns:1fr} }
   .fb>div{border-radius:12px;padding:1.3rem 1.4rem;border:1px solid}
-  .fb .r{font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;margin-bottom:.7rem;display:block}
+  .fb .r{font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;margin-bottom:.7rem;display:inline-flex;align-items:center;gap:.5em}
+  .fb .r .icon{width:15px;height:15px}
   .fb .msg{font-size:.94rem;line-height:1.45}
   /* nada de opacity aqui: ela mistura o texto com o fundo e derruba o contraste
      de 4,7 para 3,7 sem que auditor nenhum perceba. Hierarquia vem do tamanho. */
@@ -947,6 +957,25 @@
 </section>
 
 <!-- ============ 07 · PALETTE ============ -->
+<!-- ============ ICONS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">System</span>
+      <h2>Icons</h2>
+    </div>
+    <p class="lede measure" data-reveal>One line family, used only where it earns its place. Each icon sits on a 24×24 grid with a 2&nbsp;px stroke, round caps and joins, and no fill. They take their color from the text around them — ink on light, cru on dark, an accent when they carry status.</p>
+    <div class="icon-grid" data-reveal>
+      <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span class="nm">error</span></div>
+      <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span class="nm">success</span></div>
+      <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span class="nm">warning</span></div>
+      <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span class="nm">info</span></div>
+      <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span class="nm">theme · dark</span></div>
+      <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><span class="nm">theme · light</span></div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="sec-head" data-reveal>
@@ -985,10 +1014,10 @@
 
     <p class="block-label" data-reveal>feedback</p>
     <div class="fb" data-reveal>
-      <div class="error"><span class="r">Error</span><span class="msg">The mold could not be saved.</span><div class="hex">suo #8E3B4E</div></div>
-      <div class="success"><span class="r">Success</span><span class="msg">Your collection is published.</span><div class="hex">matcha #C6CFA3</div></div>
-      <div class="warning"><span class="r">Warning</span><span class="msg">This shape is below 32 px.</span><div class="hex">gold #C4A25A</div></div>
-      <div class="info"><span class="r">Info</span><span class="msg">Limited run — 40 pieces left.</span><div class="hex">mizu #A6C9CC</div></div>
+      <div class="error"><span class="r"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Error</span><span class="msg">The mold could not be saved.</span><div class="hex">suo #8E3B4E</div></div>
+      <div class="success"><span class="r"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Success</span><span class="msg">Your collection is published.</span><div class="hex">matcha #C6CFA3</div></div>
+      <div class="warning"><span class="r"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Warning</span><span class="msg">This shape is below 32 px.</span><div class="hex">gold #C4A25A</div></div>
+      <div class="info"><span class="r"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>Info</span><span class="msg">Limited run — 40 pieces left.</span><div class="hex">mizu #A6C9CC</div></div>
     </div>
 
     <p class="block-label" data-reveal>light ↔ dark</p>

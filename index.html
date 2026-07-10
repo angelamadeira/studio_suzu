@@ -539,6 +539,8 @@
     .theme-toggle:hover::before{color:var(--text)}
   }
 
+  .lnk{color:var(--ouro-txt);text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .15s}
+  .lnk:hover{border-color:var(--ouro)}
   /* ---------- ícones (família de linha, 24×24, traço 2px, sem preenchimento) ---------- */
   .icon{width:1.2em;height:1.2em;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;
         stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em}
@@ -557,7 +559,7 @@
   @media(max-width:900px){ .fb{grid-template-columns:1fr 1fr} }
   @media(max-width:520px){ .fb{grid-template-columns:1fr} }
   .fb>div{border-radius:12px;padding:1.3rem 1.4rem;border:1px solid}
-  .fb .r{font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;margin-bottom:.7rem;display:inline-flex;align-items:center;gap:.5em}
+  .fb .r{font-size:var(--label-sm);letter-spacing:var(--label-sm-track);text-transform:uppercase;margin-bottom:.7rem;display:flex;align-items:center;gap:.5em}
   .fb .r .icon{width:15px;height:15px}
   .fb .msg{font-size:.94rem;line-height:1.45}
   /* nada de opacity aqui: ela mistura o texto com o fundo e derruba o contraste
@@ -967,7 +969,7 @@
       <span class="eyebrow">System</span>
       <h2>Icons</h2>
     </div>
-    <p class="lede measure" data-reveal>One line family, used only where it earns its place. Each icon sits on a 24×24 grid with a 2&nbsp;px stroke, round caps and joins, and no fill. They take their color from the text around them — ink on light, cru on dark, an accent when they carry status.</p>
+    <p class="lede measure" data-reveal>One line family, used only where it earns its place. Each icon sits on a 24×24 grid with a 2&nbsp;px stroke, round caps and joins, and no fill. They take their color from the text around them — ink on light, cru on dark, an accent when they carry status. The set is drawn from <a class="lnk" href="https://feathericons.com" target="_blank" rel="noopener">Feather</a> (MIT) — see the full library there.</p>
     <div class="icon-grid" data-reveal>
       <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span class="nm">error</span></div>
       <div class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span class="nm">success</span></div>

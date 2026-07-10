@@ -163,7 +163,11 @@
   /* Editorial: everything anchors to the same left margin. The row climbs,
      the title drops to the foot, and the emptiness between them is the subject. */
   .cover{
-    min-height:100vh;position:relative;z-index:2;
+    /* 100vh no celular inclui a área sob a barra do navegador: o rodapé da capa
+       fica fora da tela. svh mede o viewport pequeno, que é o visível de fato. */
+    min-height:100vh;
+    min-height:100svh;
+    position:relative;z-index:2;
     display:grid;grid-template-rows:auto auto 1fr auto;
     padding:clamp(2.4rem,7vh,4.6rem) clamp(1.4rem,5vw,2.6rem) clamp(2.2rem,6vh,3.6rem);
     max-width:var(--wrap);margin:0 auto;
@@ -209,6 +213,22 @@
     .cover-foot{flex-direction:column;align-items:flex-start;gap:1.7rem}
     .cover-meta{flex-direction:row;align-items:center;gap:1.1rem;padding:0}
     .cover-meta .jp{font-size:1.15rem}
+  }
+  @media (max-width:520px){
+    /* a fileira é o herói: devolve-se largura a ela cortando margem e vão.
+       O selo sai de 39px (colado no mínimo de 32) para ~45px. */
+    .cover{padding-left:1.15rem;padding-right:1.15rem;
+           padding-bottom:calc(2.2rem + env(safe-area-inset-bottom,0px))}
+    /* A fileira quebra em DUAS linhas: 4 por linha em vez de 7 numa só.
+       As bolinhas dobram de tamanho (42px -> ~76px) e o selo, que estava
+       colado no mínimo de 32px, passa a ler de verdade. A primeira linha
+       fecha com o selo; a segunda traz as três candy restantes. */
+    .cover-row{flex-wrap:wrap;gap:.7rem;max-width:none}
+    /* teto no mesmo diâmetro do desktop (~88px): sem ele, em 520px a bolinha
+       incha para 109px e desproporciona o título */
+    .cd{flex:0 0 calc((100% - 3 * .7rem) / 4);max-width:88px}
+    .cover-title{font-size:2.9rem;line-height:.98}
+    .cover .eyebrow{margin-bottom:2.2rem;letter-spacing:.24em}
   }
   @media (prefers-reduced-motion:reduce){
     .cd,.cover-foot{animation:none}
@@ -398,6 +418,14 @@
   /* ---------- responsive ---------- */
   @media(max-width:760px){
     .pillars,.voice,.logo-grid,.rules ul{grid-template-columns:1fr}
+    /* 2,6rem de padding lateral comiam 83px dos 315px do card */
+    .rules .do{padding:1.8rem 1.5rem}
+    .rules h4{margin-bottom:1.1rem}
+    .rules li{grid-template-columns:1.15em 1fr;font-size:.97rem;padding:.5rem 0}
+    .pillar{padding:1.8rem 1.6rem}
+    .voice>div{padding:1.6rem 1.5rem}
+    .fb>div{padding:1.2rem 1.3rem}
+    .dark-plate{padding:1.7rem 1.4rem}
     .pal-4,.pal-5,.pal-6,.pal-7,.neutros-ramp,.weights,.demo-grid{grid-template-columns:repeat(3,1fr)}
     .deflist .row,.specimen>div{grid-template-columns:1fr;gap:.35rem}
     .tone-legend,.tone-row{grid-template-columns:4.4rem repeat(4,1fr)}
@@ -496,6 +524,9 @@
     color:var(--rotulo);background:var(--papel);border:1px solid var(--line);border-radius:999px;
     padding:.55rem 1rem;min-height:32px;transition:color .15s,border-color .15s}
   .theme-toggle:hover{color:var(--text);border-color:var(--ouro)}
+  /* fixed cobre o canto superior direito de TODO o texto que passa por baixo.
+     Abaixo de 900px não há margem sobrando: o botão passa a rolar com a página. */
+  @media(max-width:900px){ .theme-toggle{position:absolute} }
 
   /* ---------- feedback ---------- */
   .fb{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}

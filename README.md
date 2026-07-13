@@ -1,4 +1,4 @@
-# Studio Suzu 鈴
+# Studio Suzu
 
 Brand guidelines for **Studio Suzu** — an authorial mold studio for confectionery.
 
@@ -15,9 +15,8 @@ Brand guidelines for **Studio Suzu** — an authorial mold studio for confection
 ## The brandbook is one file
 
 `index.html` carries everything inside it: the vectors, the wave illustration, and the Jost and
-Cormorant typefaces as embedded `woff2`. Open it from a USB stick on a plane and it renders whole.
-The only thing it fetches over the network is **Noto Serif JP**, used solely for the kanji; without
-it, they fall back to a system font.
+Cormorant typefaces as embedded `woff2`. It fetches nothing over the network — open it from a USB
+stick on a plane and it renders whole.
 
 That means you can also just **email the file**. Hosting is a convenience, not a requirement.
 
@@ -47,7 +46,6 @@ Printing always produces the light theme, whichever theme is on screen.
 |---|---|---|
 | Jost | variable, 100–900 | [SIL OFL 1.1](licenses/OFL-Jost.txt) |
 | Cormorant | variable, 300–700, italic only | [SIL OFL 1.1](licenses/OFL-Cormorant.txt) |
-| Noto Serif JP | kanji only, loaded from Google Fonts | [SIL OFL 1.1](https://fonts.google.com/noto/specimen/Noto+Serif+JP) |
 
 The OFL permits embedding and redistribution. The license texts travel with the fonts, as it requires.
 
